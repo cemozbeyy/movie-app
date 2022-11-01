@@ -1,0 +1,26 @@
+<footer class="dbi-footer">
+    <div class="d-flex ">
+
+        <section (click)="changeTab('home')">
+            <img src="assets/images/icons/home.svg" *ngIf="!isHome" alt="">
+            <img src="assets/images/icons/active-home.svg" *ngIf="isHome" alt="">
+            <p [ngClass]="{'active-group': isHome}"> Home</p>
+        </section>
+
+
+        <section (click)="changeTab('search')">
+
+            <img src="assets/images/icons/search.svg" *ngIf="!isSearch" alt="">
+            <img src="assets/images/icons/active-search.svg" *ngIf="isSearch" alt="">
+            <p [ngClass]="{'active-group': isSearch}"> Search</p>
+        </section>
+
+
+        <section (click)="changeTab('watch-list')">
+            <img src="assets/images/icons/watch-list.svg" *ngIf="!isWatchList" alt="">
+            <img src="assets/images/icons/active-watch-list.svg" *ngIf="isWatchList" alt="">
+            <p [ngClass]="{'active-group': isWatchList}"> Watch List</p>
+        </section>
+
+    </div>
+</footer>

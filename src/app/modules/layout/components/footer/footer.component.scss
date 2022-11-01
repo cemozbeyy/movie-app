@@ -1,0 +1,22 @@
+.dbi-footer {
+    width: 100%;
+    background-color: var(--main-color);
+    padding: 1rem 1.25rem;
+    position: absolute;
+    bottom: 0;
+    section {
+        margin: auto;
+        .active-group {
+            color: #0296e5;
+        }
+        p {
+            color: var(--footer-text);
+            margin: auto;
+            text-align: center;
+        }
+        img {
+            margin: auto;
+            display: flex;
+        }
+    }
+}

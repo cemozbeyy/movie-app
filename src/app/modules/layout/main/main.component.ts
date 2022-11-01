@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'mvi-main',
-    templateUrl: 'main.component.html'
+    selector: 'dbi-main',
+    templateUrl: 'main.component.html',
+    styleUrls: ['main.component.scss']
 })
 
 export class MainComponent implements OnInit {

@@ -3,16 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 
 
-const routes: Routes = [
-    {
-        path: '',
-        component: LayoutComponent
-    }
+const ROUTES: Routes = [
+    { path: '', component: LayoutComponent, loadChildren: () => import('./main/main.component').then(m => m.MainComponent) },
 ]
+
 
 @NgModule({
     imports: [
-        RouterModule.forChild(routes)
+        RouterModule.forChild(ROUTES)
     ],
     exports: [
         RouterModule
