@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoaderInterceptor } from './core/helpers/loader.interceptor';
+import { LoaderComponent } from './modules/layout/components/loader/loader.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
 
   ],
-  providers: [HttpClientModule],
+  providers: [
+    HttpClientModule,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

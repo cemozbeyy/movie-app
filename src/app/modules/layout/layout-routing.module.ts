@@ -4,9 +4,11 @@ import { LayoutComponent } from './layout.component';
 
 
 const ROUTES: Routes = [
-    { path: '', component: LayoutComponent, loadChildren: () => import('./main/main.component').then(m => m.MainComponent) },
+    {
+        path: '',
+        component: LayoutComponent
+    }
 ]
-
 
 @NgModule({
     imports: [

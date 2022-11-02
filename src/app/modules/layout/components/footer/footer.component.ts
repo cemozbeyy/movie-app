@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/core/services/movie.service';
 
 @Component({
     selector: 'dbi-footer',
@@ -7,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class FooterComponent implements OnInit {
-    constructor() { }
+    constructor(private mov: MovieService) { }
     isHome!: boolean
     isSearch!: boolean
     isWatchList!: boolean
     ngOnInit() {
+        this.mov.getMovies().subscribe(a => {
+            console.log(a)
+        })
         this.changeTab("home")
     }
 
