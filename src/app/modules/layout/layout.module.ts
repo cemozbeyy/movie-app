@@ -4,7 +4,7 @@ import { FooterComponent } from './components';
 import { LayoutRoutingModule } from './layout-routing.module';
 
 import { LayoutComponent } from './layout.component';
-import { MainComponent, SearchComponent, WatchListComponent } from './main';
+import { HomeComponent, MainComponent, SearchComponent, WatchListComponent } from './main';
 
 
 const COMPONENTS = [
@@ -13,6 +13,7 @@ const COMPONENTS = [
     FooterComponent,
     WatchListComponent,
     SearchComponent,
+    HomeComponent
 ]
 
 @NgModule({

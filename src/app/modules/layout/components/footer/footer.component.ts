@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/core/services/main.service';
 import { MovieService } from 'src/app/core/services/movie.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { MovieService } from 'src/app/core/services/movie.service';
 })
 
 export class FooterComponent implements OnInit {
-    constructor(private mov: MovieService) { }
+    constructor(private mov: MovieService, private mainService: MainService) { }
     isHome!: boolean
     isSearch!: boolean
     isWatchList!: boolean
@@ -20,6 +21,7 @@ export class FooterComponent implements OnInit {
     }
 
     changeTab(currentTab: string) {
+        this.mainService.selectedTab = currentTab
         if (currentTab == "home") {
             this.isHome = true
             this.isSearch = false

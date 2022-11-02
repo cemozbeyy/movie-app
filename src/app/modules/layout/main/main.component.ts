@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/core/services/main.service';
 
 @Component({
     selector: 'dbi-main',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MainComponent implements OnInit {
-    constructor() { }
+    currentTab: string = ""
+    constructor(private mainService: MainService) {
+        setTimeout(() => {
+            this.currentTab = this.mainService.selectedTab
+        }, 10);
+
+    }
 
     ngOnInit() { }
 }
