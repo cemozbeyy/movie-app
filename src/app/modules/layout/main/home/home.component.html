@@ -1,1 +1,18 @@
-sfdsf
+<section class="dbi-home">
+    <header>
+        <h3 class="dbi-title">
+            What do you want to watch?
+        </h3>
+        <label>
+            <input class="dbi-input" placeholder="Search" type="text">
+        </label>
+        <carousel class="mt-4">
+            <ng-container *ngFor="let images of imagePath;">
+                <div class="carousel-cell">
+                    <img [src]="url + images.backdrop_path" />
+                </div>
+
+            </ng-container>
+        </carousel>
+    </header>
+</section>

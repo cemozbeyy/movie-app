@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { FooterComponent } from './components';
 import { LayoutRoutingModule } from './layout-routing.module';
 
@@ -19,7 +20,8 @@ const COMPONENTS = [
 @NgModule({
     imports: [
         LayoutRoutingModule,
-        CommonModule
+        CommonModule,
+        IvyCarouselModule
     ],
     exports: [],
     declarations: [...COMPONENTS],

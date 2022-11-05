@@ -9,14 +9,11 @@ import { MovieService } from 'src/app/core/services/movie.service';
 })
 
 export class FooterComponent implements OnInit {
-    constructor(private mov: MovieService, private mainService: MainService) { }
+    constructor(private mainService: MainService) { }
     isHome!: boolean
     isSearch!: boolean
     isWatchList!: boolean
     ngOnInit() {
-        this.mov.getMovies().subscribe(a => {
-            console.log(a)
-        })
         this.changeTab("home")
     }
 
