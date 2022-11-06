@@ -1,1 +1,44 @@
-search
+<section class="dbi-search">
+    <header class="row pt-4 m-0">
+        <div class="col-4">
+            <img (click)="backDashBoard('home')" src="assets/images/icons/back.svg">
+        </div>
+        <div class="col-4">
+            <h3>
+                Search
+            </h3>
+        </div>
+        <div class="col-4">
+            <img src="assets/images/icons/info.svg">
+        </div>
+    </header>
+    <div class="dbi-search__input pt-4">
+        <label>
+            <input class="form-control dbi-input" name="search" [formControl]="searchControl" autocomplete="off"
+                placeholder="Search" type="text">
+        </label>
+    </div>
+    <main class="dbi-search__main">
+        <div class="dbi-search__main__not-found" *ngIf="!ifHaveQuery">
+            <img class="dbi-search__main__not-found__im" src="assets/images/not-found.svg" alt="">
+            <h3>
+                We Are Sorry, We Can Not Find The Movie :(
+            </h3>
+            <p class="dbi-search__main__not-found__subtext">
+                Find your movie by Type title, categories, years, etc
+            </p>
+        </div>
+        <div class="dbi-search__main__finded-movies" *ngIf="ifHaveQuery">
+            <div class="d-flex" *ngFor="let movie of findedMovies">
+                <div>
+                    <img [src]="url + movie.backdrop_path" alt="">
+                </div>
+                <div>
+                    <h5> {{movie.original_title }} </h5>
+                    <div>{{movie.vote_average}} </div>
+                    <div> {{movie.release_date}} </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</section>

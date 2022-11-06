@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { FooterComponent } from './components';
 import { LayoutRoutingModule } from './layout-routing.module';
@@ -23,7 +23,8 @@ const COMPONENTS = [
         LayoutRoutingModule,
         CommonModule,
         IvyCarouselModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [],
     declarations: [...COMPONENTS],

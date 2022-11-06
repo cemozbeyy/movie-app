@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
     isSearch!: boolean
     isWatchList!: boolean
     ngOnInit() {
-        this.changeTab("home")
+        this.changeTab("search")
     }
 
     changeTab(currentTab: string) {
