@@ -11,7 +11,11 @@ export class MainComponent implements OnInit {
     currentTab: string = ""
     constructor(private mainService: MainService) {
         setTimeout(() => {
-            this.currentTab = this.mainService.selectedTab
+            this.mainService.selectedTab.subscribe(changedTab => {
+                this.currentTab = changedTab
+                console.log(this.currentTab)
+            })
+
         }, 10);
 
     }

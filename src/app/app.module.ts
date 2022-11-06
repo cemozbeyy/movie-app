@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderInterceptor } from './core/helpers/loader.interceptor';
 import { LoaderComponent } from './modules/layout/components/loader/loader.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { LoaderComponent } from './modules/layout/components/loader/loader.compo
     HttpClientModule,
     BrowserAnimationsModule,
     CommonModule,
+    FormsModule
 
   ],
   providers: [

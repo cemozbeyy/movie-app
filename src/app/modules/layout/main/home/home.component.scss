@@ -1,6 +1,7 @@
 .dbi-home {
     background-color: var(--main-color);
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     width: 100%;
     .dbi-title {
         color: var(--second-color);
@@ -34,19 +35,50 @@
             }
         }
     }
-}
-::ng-deep .carousel {
-    height: 13.125rem !important;
-    .carousel-cells .carousel-cell {
-        width: 9.375rem !important;
-        margin-left: 1.5625rem;
+    .dbi-tabs {
+        margin: 4.5rem 0 0 0.35rem;
+        h4 {
+            color: var(--second-color);
+            font-size: 13px;
+            margin: auto;
+            text-align: center;
+            height: 3.125rem;
+            font-weight: 600;
+            width: 80px;
+            hr {
+                color: #3a3f47;
+                border-top: 3px solid;
+            }
+        }
     }
-    img {
-        object-fit: unset !important;
-        border-radius: 1rem;
-        width: 9.375rem !important;
+    ::ng-deep .carousel {
+        height: 13.125rem !important;
+        .carousel-cells .carousel-cell {
+            width: 9.375rem !important;
+            margin-left: 1.5625rem;
+        }
+        img {
+            object-fit: unset !important;
+            border-radius: 1rem;
+            width: 9.375rem !important;
+        }
+        .carousel-arrows {
+            display: none !important;
+        }
     }
-    .carousel-arrows {
-        display: none !important;
+    .dbi-movies-main {
+        .row {
+            margin: 0px !important;
+            .col-3 {
+                width: 30% !important;
+                margin: auto;
+                margin-bottom: 1.225rem;
+            }
+            img {
+                width: 6.25rem;
+                border-radius: 15px;
+                height: 9.375rem;
+            }
+        }
     }
 }

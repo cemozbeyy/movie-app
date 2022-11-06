@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
     }
 
     changeTab(currentTab: string) {
-        this.mainService.selectedTab = currentTab
+        this.mainService.selectedTab.next(currentTab)
         if (currentTab == "home") {
             this.isHome = true
             this.isSearch = false

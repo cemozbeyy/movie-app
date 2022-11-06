@@ -11,8 +11,25 @@
                 <div class="carousel-cell">
                     <img [src]="url + images.backdrop_path" />
                 </div>
-
             </ng-container>
         </carousel>
+        <section class="dbi-tabs">
+            <div class="d-flex">
+                <h4 *ngFor="let title of tabNames">
+                    <ng-container>
+                        {{title.name}}
+                    </ng-container>
+                    <hr *ngIf="title.isClicked">
+                </h4>
+
+            </div>
+        </section>
+        <main class="dbi-movies-main">
+            <div class="row">
+                <div class="col-3" *ngFor="let nowMovies of getNowPlayingMovies.results">
+                    <img [src]="url + nowMovies.backdrop_path" alt="">
+                </div>
+            </div>
+        </main>
     </header>
 </section>
