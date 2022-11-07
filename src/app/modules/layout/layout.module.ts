@@ -6,7 +6,7 @@ import { FooterComponent } from './components';
 import { LayoutRoutingModule } from './layout-routing.module';
 
 import { LayoutComponent } from './layout.component';
-import { HomeComponent, MainComponent, SearchComponent, WatchListComponent } from './main';
+import { HomeComponent, MainComponent, MovieDetailsComponent, SearchComponent, WatchListComponent } from './main';
 
 
 const COMPONENTS = [
@@ -15,7 +15,8 @@ const COMPONENTS = [
     FooterComponent,
     WatchListComponent,
     SearchComponent,
-    HomeComponent
+    HomeComponent,
+    MovieDetailsComponent
 ]
 
 @NgModule({
