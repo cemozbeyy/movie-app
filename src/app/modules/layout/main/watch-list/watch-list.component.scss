@@ -1,0 +1,21 @@
+.dbi-watch-list {
+    background-color: var(--main-color);
+    min-height: 100vh;
+    height: 100%;
+
+    width: 100%;
+    h3 {
+        color: #ececec;
+    }
+    &__not-found {
+        text-align: center;
+        margin-top: 50%;
+        h4 {
+            color: #ebebef;
+        }
+        p {
+            font-size: 0.75rem;
+            color: #92929d;
+        }
+    }
+}

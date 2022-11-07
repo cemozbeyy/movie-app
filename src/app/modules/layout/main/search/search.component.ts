@@ -30,7 +30,10 @@ export class SearchComponent implements OnInit {
 
     ngOnInit() { }
     sendDetails(movie: MovieDetails) {
-        this.movieService.getMovieDetails.next(movie)
+
+        this.movieService.movieDetails(movie.id).subscribe(sendMovieDetail => {
+            this.movieService.getMovieDetails.next(sendMovieDetail)
+        })
     }
     searchedMovies(query: string) {
         if (query !== "") {

@@ -32,7 +32,7 @@
         <div class="dbi-search__main__finded-movies" *ngIf="ifHaveQuery">
             <div class="d-flex mt-3" *ngFor="let movie of findedMovies">
                 <div>
-                    <img [routerLink]="'movie-detail'" (click)="sendDetails(movie)" [src]="url + movie.backdrop_path"
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(movie)" [src]="url + movie.poster_path"
                         alt="">
                 </div>
                 <div class="dbi-search__main__finded-movies__detail ms-3">

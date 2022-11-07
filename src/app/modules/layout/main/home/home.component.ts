@@ -14,24 +14,44 @@ export class HomeComponent implements OnInit {
     url = "https://image.tmdb.org/t/p/w200"
     clickedVal: any
     getNowPlayingMovies!: MovieDetails[]
-    tabNames = [
-        { name: "Now playing", isClicked: true },
-        { name: "Upcoming", isClicked: false },
-        { name: "Top Rated", isClicked: false },
-        { name: "Popular", isClicked: false }
-    ]
+    activeClick = ""
+    getUpComingMovies!: MovieDetails[]
+    getTopRated!: MovieDetails[]
+    getPopularmovies!: MovieDetails[]
     constructor(private movieService: MovieService) {
         console.log(this.clickedVal)
     }
 
 
     ngOnInit() {
-        this.topRatedMovies()
         this.getMovies()
         this.nowPlayingMovies()
+        this.activeClicked("nowPlay")
     }
     sendDetails(movie: MovieDetails) {
-        this.movieService.getMovieDetails.next(movie)
+        this.movieService.movieDetails(movie.id).subscribe(sendMovieDetail => {
+            this.movieService.getMovieDetails.next(sendMovieDetail)
+        })
+    }
+    activeClicked(clickParamter: string) {
+
+        if (clickParamter == "nowPlay") {
+            this.activeClick = clickParamter
+        }
+        else if (clickParamter == "upComing") {
+            this.activeClick = clickParamter
+            this.upComingMovies()
+        }
+        else if (clickParamter == "topRated") {
+            this.activeClick = clickParamter
+            this.topRatedMovies()
+        }
+        else {
+            this.activeClick = clickParamter
+            this.popularMovies()
+        }
+
+
     }
     getMovies() {
         this.movieService.getMovies().subscribe(discoverMovies => {
@@ -39,6 +59,16 @@ export class HomeComponent implements OnInit {
             discoverMovies.forEach((movies: MovieDetails) => {
                 this.imagePath.push(movies)
             });
+        })
+    }
+    upComingMovies() {
+        this.movieService.upComingMovies().subscribe(getUpComing => {
+            this.getUpComingMovies = getUpComing.results
+        })
+    }
+    popularMovies() {
+        this.movieService.popularMovies().subscribe(popularMovies => {
+            this.getPopularmovies = popularMovies.results
         })
     }
     nowPlayingMovies() {
@@ -49,8 +79,8 @@ export class HomeComponent implements OnInit {
     }
 
     topRatedMovies() {
-        this.movieService.topRatedMovies().subscribe((topRatedMovies) => {
-            // TopRated Tab
+        this.movieService.topRatedMovies().subscribe(topRatedMovies => {
+            this.getTopRated = topRatedMovies.results
         })
     }
 }

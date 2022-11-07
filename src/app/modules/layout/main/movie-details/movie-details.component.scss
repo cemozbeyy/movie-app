@@ -2,7 +2,6 @@
     background-color: var(--main-color);
     min-height: 100vh;
     height: 100%;
-
     width: 100%;
     .col-4 {
         &:nth-child(1) {
@@ -24,6 +23,145 @@
             img {
                 display: flex;
                 margin: auto;
+            }
+        }
+    }
+    &__main {
+        &__header {
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+            &__rate {
+                p {
+                    margin-bottom: 0px;
+                    color: #ff8700;
+                    font-size: 0.825rem;
+                }
+                img {
+                    width: 0.9375rem;
+                    object-fit: fill;
+                    margin-right: 0.625rem;
+                }
+                padding: 0.3125rem 1rem;
+                background: rgba(37, 40, 54, 0.32);
+                position: absolute;
+                display: flex;
+                text-align: center;
+                margin: auto;
+                top: 32%;
+                -webkit-backdrop-filter: blur(0.625rem);
+                backdrop-filter: blur(0.625rem);
+                border-radius: 0.5rem;
+                right: 1rem;
+            }
+        }
+        &__title {
+            &__poster-img {
+                @media (max-width: 320px) {
+                    h5 {
+                        text-align: center;
+                    }
+                }
+
+                img {
+                    width: 95px;
+                    height: 125px;
+                    object-fit: cover;
+                    position: absolute;
+                    left: 35px;
+                    border-radius: 16px;
+                    margin-top: -50px;
+                }
+                h5 {
+                    color: var(--second-color);
+                    font-weight: 600;
+                    line-height: 2.125rem;
+                    font-size: 1.125rem;
+                    padding-top: 0.4375rem;
+                }
+            }
+        }
+        &__movie-details {
+            display: flex;
+            width: 75%;
+            margin: auto;
+            margin-top: 2.5rem;
+            div {
+                display: flex;
+                p {
+                    color: #92929d;
+                    font-weight: 500;
+                    margin: 0 0 0 0.325rem;
+                }
+                padding-right: 0.9375rem;
+                margin: auto;
+                &:nth-child(1) {
+                    border-right: 1px solid #696974;
+                }
+                &:nth-child(2) {
+                    border-right: 1px solid #696974;
+                }
+            }
+            img {
+                margin: auto;
+            }
+        }
+        &__tabs {
+            margin: 4.5rem 0 0 0.35rem;
+            h4 {
+                color: var(--second-color);
+                font-size: 13px;
+                margin: auto;
+                text-align: center;
+                height: 3.125rem;
+                font-weight: 600;
+                width: 80px;
+                hr {
+                    color: #3a3f47;
+                    border-top: 3px solid;
+                }
+            }
+        }
+        &__tabs-content {
+            &__about {
+                color: var(--second-color);
+                margin: 1.5rem 1.55rem 0 1.55rem;
+            }
+            &__reviews {
+                display: flex;
+                img {
+                    border-radius: 50%;
+                }
+                &__rate {
+                    color: #0296e5;
+                    margin-top: 0.625rem;
+                    text-align: center;
+                }
+                &__name {
+                    color: var(--second-color);
+                    font-weight: 500;
+                }
+                &__cast {
+                    .col-6 {
+                        display: grid;
+                        margin: 1.625rem 0;
+                        img {
+                            border-radius: 50%;
+                            width: 100px;
+                            object-fit: cover;
+                            margin: auto;
+                            height: 100px;
+                        }
+                        p {
+                            color: var(--second-color);
+                            margin: auto;
+                        }
+                    }
+                }
+                color: var(--second-color);
+                font-size: 0.75rem;
+                margin: 1.5rem 1.55rem 0 1.55rem;
             }
         }
     }

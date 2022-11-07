@@ -1,7 +1,7 @@
 <div class="dbi-details">
     <header class="row pt-4 m-0">
         <div class="col-4">
-            <img src="assets/images/icons/back.svg">
+            <img (click)="backDashBoard('home')" src="assets/images/icons/back.svg">
         </div>
         <div class="col-4">
             <h3>
@@ -12,4 +12,73 @@
             <img src="assets/images/icons/save.svg">
         </div>
     </header>
+    <div class="dbi-details__main">
+        <header class="dbi-details__main__header">
+            <img class="mt-5" [src]="postUrl + getMovieDetails?.backdrop_path" alt="">
+            <span class="dbi-details__main__header__rate">
+                <img src="assets/images/icons/star.svg" alt="">
+                <p>{{ getMovieDetails?.vote_average }}</p>
+            </span>
+        </header>
+        <main class="dbi-details__main__title">
+            <div class="d-flex m-0 p-0 row dbi-details__main__title__poster-img">
+                <div class="col-3"> <img [src]="url + getMovieDetails?.poster_path" alt=""></div>
+                <div class="col-2"></div>
+                <div class="col-7">
+                    <h5> {{getMovieDetails?.title}} </h5>
+                </div>
+            </div>
+            <section class="dbi-details__main__movie-details">
+                <div> <img src="assets/images/icons/calender.svg" alt="">
+                    <p> {{getMovieDetails?.release_date}}</p>
+                </div>
+                <div> <img src="assets/images/icons/clock.svg" alt="">
+                    <p>{{getMovieDetails?.runtime}}</p>
+                </div>
+                <div> <img src="assets/images/icons/ticket.svg" alt="">
+                    <p> {{movieType}} </p>
+                </div>
+            </section>
+            <section class="dbi-details__main__tabs">
+                <div class="d-flex">
+                    <h4 (click)="activeClicked('aboutMovie')">
+                        About Movie
+                        <hr *ngIf="activeClick == 'aboutMovie'">
+                    </h4>
+                    <h4 (click)="activeClicked('reviews')">
+                        Reviews
+                        <hr *ngIf="activeClick == 'reviews'">
+                    </h4>
+                    <h4 (click)="activeClicked('cast')">
+                        Cast
+                        <hr *ngIf="activeClick == 'cast'">
+                    </h4>
+                </div>
+            </section>
+            <div class="dbi-details__main__tabs-content" *ngIf="activeClick == 'aboutMovie'">
+                <p class="dbi-details__main__tabs-content__about"> {{getMovieDetails?.overview}}</p>
+            </div>
+            <div *ngIf="activeClick == 'reviews'">
+                <section *ngFor="let review of getUserReviews" class="dbi-details__main__tabs-content__reviews">
+                    <div>
+                        <img *ngIf="review.author_details.avatar_path" [src]="review.author_details.avatar_path" alt="">
+                        <img *ngIf="!review.author_details.avatar_path" src="assets/images/icons/user.svg" alt="">
+                        <p class="dbi-details__main__tabs-content__reviews__rate">{{ review.author_details.rating}} </p>
+                    </div>
+                    <div class="ms-4">
+                        <p class="dbi-details__main__tabs-content__reviews__name"> {{ review.author_details.name}} </p>
+                        <p> {{review.content}} </p>
+                    </div>
+                </section>
+            </div>
+            <div *ngIf="activeClick == 'cast'">
+                <div class="row m-0 p-0 dbi-details__main__tabs-content__reviews__cast">
+                    <div *ngFor="let actor of actorCasts" class="col-6">
+                        <img [src]="url + actor.profile_path" alt="">
+                        <p> {{actor.original_name}} </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 </div>

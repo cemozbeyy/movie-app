@@ -69,11 +69,15 @@
     .dbi-movies-main {
         .row {
             margin: 0px !important;
+            &:last-child {
+                padding-bottom: 25%;
+            }
             .col-3 {
                 width: 30% !important;
                 margin: auto;
                 margin-bottom: 1.225rem;
             }
+
             img {
                 width: 6.25rem;
                 border-radius: 15px;

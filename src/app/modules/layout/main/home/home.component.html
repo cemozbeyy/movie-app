@@ -9,27 +9,59 @@
         <carousel class="mt-4">
             <ng-container *ngFor="let images of imagePath;">
                 <div class="carousel-cell">
-                    <img [routerLink]="'movie-detail'" (click)="sendDetails(images)"
-                        [src]="url + images.backdrop_path" />
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(images)" [src]="url + images.poster_path" />
                 </div>
             </ng-container>
         </carousel>
         <section class="dbi-tabs">
             <div class="d-flex">
-                <h4 *ngFor="let title of tabNames">
-                    <ng-container>
-                        {{title.name}}
-                    </ng-container>
-                    <hr *ngIf="title.isClicked">
+                <h4 (click)="activeClicked('nowPlay')">
+                    Now playing
+                    <hr *ngIf="activeClick == 'nowPlay'">
                 </h4>
-
+                <h4 (click)="activeClicked('upComing')">
+                    Upcoming
+                    <hr *ngIf="activeClick == 'upComing'">
+                </h4>
+                <h4 (click)="activeClicked('topRated')">
+                    Top Rated
+                    <hr *ngIf="activeClick == 'topRated'">
+                </h4>
+                <h4 (click)="activeClicked('popular')">
+                    Popular
+                    <hr *ngIf="activeClick == 'popular'">
+                </h4>
             </div>
         </section>
-        <main class="dbi-movies-main">
+        <main *ngIf="activeClick == 'nowPlay'" class="dbi-movies-main">
             <div class="row">
                 <div class="col-3" *ngFor="let nowMovies of getNowPlayingMovies">
                     <img [routerLink]="'movie-detail'" (click)="sendDetails(nowMovies)"
-                        [src]="url + nowMovies.backdrop_path" alt="">
+                        [src]="url + nowMovies.poster_path" alt="">
+                </div>
+            </div>
+        </main>
+        <main *ngIf="activeClick == 'upComing'" class="dbi-movies-main">
+            <div class="row">
+                <div class="col-3" *ngFor="let nowMovies of getUpComingMovies">
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(nowMovies)"
+                        [src]="url + nowMovies.poster_path" alt=""> UPCOMİNG
+                </div>
+            </div>
+        </main>
+        <main *ngIf="activeClick == 'topRated'" class="dbi-movies-main">
+            <div class="row">
+                <div class="col-3" *ngFor="let nowMovies of getTopRated">
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(nowMovies)"
+                        [src]="url + nowMovies.poster_path" alt=""> TOPRATED
+                </div>
+            </div>
+        </main>
+        <main *ngIf="activeClick == 'popular'" class="dbi-movies-main">
+            <div class="row">
+                <div class="col-3" *ngFor="let nowMovies of getPopularmovies">
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(nowMovies)"
+                        [src]="url + nowMovies.poster_path" alt=""> POPULAR
                 </div>
             </div>
         </main>
