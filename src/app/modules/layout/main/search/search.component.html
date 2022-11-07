@@ -18,6 +18,7 @@
                 placeholder="Search" type="text">
         </label>
     </div>
+
     <main class="dbi-search__main">
         <div class="dbi-search__main__not-found" *ngIf="!ifHaveQuery">
             <img class="dbi-search__main__not-found__im" src="assets/images/not-found.svg" alt="">
@@ -29,16 +30,23 @@
             </p>
         </div>
         <div class="dbi-search__main__finded-movies" *ngIf="ifHaveQuery">
-            <div class="d-flex" *ngFor="let movie of findedMovies">
+            <div class="d-flex mt-3" *ngFor="let movie of findedMovies">
                 <div>
                     <img [src]="url + movie.backdrop_path" alt="">
                 </div>
-                <div>
+                <div class="dbi-search__main__finded-movies__detail ms-3">
                     <h5> {{movie.original_title }} </h5>
-                    <div>{{movie.vote_average}} </div>
-                    <div> {{movie.release_date}} </div>
+                    <div class="d-flex">
+                        <img src="assets/images/icons/star.svg" alt="">
+                        <p class="ms-2 mb-2"> {{movie.vote_average}}</p>
+                    </div>
+                    <div class="d-flex">
+                        <img src="assets/images/icons/calender.svg" alt="">
+                        <p class="ms-2 mb-2"> {{movie.release_date}} </p>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+
 </section>
