@@ -26,7 +26,7 @@
         </section>
         <main class="dbi-movies-main">
             <div class="row">
-                <div class="col-3" *ngFor="let nowMovies of getNowPlayingMovies.results">
+                <div class="col-3" *ngFor="let nowMovies of getNowPlayingMovies">
                     <img [src]="url + nowMovies.backdrop_path" alt="">
                 </div>
             </div>

@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     imagePath!: MovieDetails[]
     url = "https://image.tmdb.org/t/p/w200"
     clickedVal: any
-    getNowPlayingMovies!: DiscoverMovies
+    getNowPlayingMovies!: MovieDetails[]
     tabNames = [
         { name: "Now playing", isClicked: true },
         { name: "Upcoming", isClicked: false },
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     nowPlayingMovies() {
         this.movieService.getNowPlaying().subscribe(nowPlayingMovies => {
             // now playing tab
-            this.getNowPlayingMovies = nowPlayingMovies
+            this.getNowPlayingMovies = nowPlayingMovies.results
         })
     }
 
