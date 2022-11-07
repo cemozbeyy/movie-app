@@ -30,7 +30,9 @@ export class HomeComponent implements OnInit {
         this.getMovies()
         this.nowPlayingMovies()
     }
-
+    sendDetails(movie: MovieDetails) {
+        this.movieService.getMovieDetails.next(movie)
+    }
     getMovies() {
         this.movieService.getMovies().subscribe(discoverMovies => {
             this.imagePath = []

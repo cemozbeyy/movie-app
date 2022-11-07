@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { DiscoverMovies } from '../helpers/models/movies.model';
+import { DiscoverMovies, MovieDetails } from '../helpers/models/movies.model';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService {
     apiURL = environment.apiUrl;
     apiKey = "api_key=fd75843b9ebbac99802953a5beb3d1fb"
+    getMovieDetails = new BehaviorSubject<MovieDetails | null>(null)
     constructor(private http: HttpClient) { }
 
     getMovies() {

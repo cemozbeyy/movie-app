@@ -1,0 +1,30 @@
+.dbi-details {
+    background-color: var(--main-color);
+    min-height: 100vh;
+    height: 100%;
+
+    width: 100%;
+    .col-4 {
+        &:nth-child(1) {
+            margin: auto;
+            img {
+                display: flex;
+                margin: auto;
+            }
+        }
+        &:nth-child(2) {
+            h3 {
+                text-align: center;
+                color: var(--second-color);
+                margin-bottom: 0px;
+            }
+        }
+        &:nth-child(3) {
+            margin: auto;
+            img {
+                display: flex;
+                margin: auto;
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-<section class="dbi-search">
+<div class="dbi-search">
     <header class="row pt-4 m-0">
         <div class="col-4">
             <img (click)="backDashBoard('home')" src="assets/images/icons/back.svg">
@@ -32,7 +32,8 @@
         <div class="dbi-search__main__finded-movies" *ngIf="ifHaveQuery">
             <div class="d-flex mt-3" *ngFor="let movie of findedMovies">
                 <div>
-                    <img [src]="url + movie.backdrop_path" alt="">
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(movie)" [src]="url + movie.backdrop_path"
+                        alt="">
                 </div>
                 <div class="dbi-search__main__finded-movies__detail ms-3">
                     <h5> {{movie.original_title }} </h5>
@@ -49,4 +50,4 @@
         </div>
     </main>
 
-</section>
+</div>

@@ -1,4 +1,4 @@
-<section class="dbi-home">
+<div class="dbi-home">
     <header>
         <h3 class="dbi-title">
             What do you want to watch?
@@ -9,7 +9,8 @@
         <carousel class="mt-4">
             <ng-container *ngFor="let images of imagePath;">
                 <div class="carousel-cell">
-                    <img [src]="url + images.backdrop_path" />
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(images)"
+                        [src]="url + images.backdrop_path" />
                 </div>
             </ng-container>
         </carousel>
@@ -27,9 +28,10 @@
         <main class="dbi-movies-main">
             <div class="row">
                 <div class="col-3" *ngFor="let nowMovies of getNowPlayingMovies">
-                    <img [src]="url + nowMovies.backdrop_path" alt="">
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(nowMovies)"
+                        [src]="url + nowMovies.backdrop_path" alt="">
                 </div>
             </div>
         </main>
     </header>
-</section>
+</div>

@@ -4,6 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { debounceTime, find, map } from 'rxjs';
 import { DiscoverMovies, MovieDetails } from 'src/app/core/helpers/models/movies.model';
 import { SearchService } from './search.service';
+import { MovieService } from 'src/app/core/services/movie.service';
 @Component({
     selector: 'dbi-search',
     templateUrl: 'search.component.html',
@@ -15,7 +16,7 @@ export class SearchComponent implements OnInit {
     ifHaveQuery?: string
     findedMovies?: MovieDetails[]
     url = "https://image.tmdb.org/t/p/w200"
-    constructor(private mainService: MainService, private searchService: SearchService) {
+    constructor(private mainService: MainService, private movieService: MovieService, private searchService: SearchService) {
         this.searchControl.valueChanges
             .pipe(
                 debounceTime(400),
@@ -28,7 +29,9 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit() { }
-
+    sendDetails(movie: MovieDetails) {
+        this.movieService.getMovieDetails.next(movie)
+    }
     searchedMovies(query: string) {
         if (query !== "") {
             this.searchService.getSearchedMovie(query).subscribe((test: DiscoverMovies) => {
