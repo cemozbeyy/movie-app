@@ -9,6 +9,7 @@ import { LayoutComponent } from './layout.component';
 import { HomeComponent, MainComponent, MovieDetailsComponent, SearchComponent, WatchListComponent } from './main';
 
 
+
 const COMPONENTS = [
     LayoutComponent,
     MainComponent,
@@ -25,7 +26,8 @@ const COMPONENTS = [
         CommonModule,
         IvyCarouselModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+
     ],
     exports: [],
     declarations: [...COMPONENTS],

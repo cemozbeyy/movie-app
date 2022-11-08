@@ -12,12 +12,35 @@
         </div>
     </header>
     <main>
-        <div class="dbi-watch-list__not-found">
+        <div *ngIf="userWatchList?.length == 0" class="dbi-watch-list__not-found">
             <img src="assets/images/icons/not-found-watch-list.svg" alt="">
             <h4>
                 There is no movie yet!
             </h4>
             <p>Find your movie by Type title, categories, years, etc </p>
+        </div>
+        <div *ngIf="userWatchList?.length !== 0" class="dbi-search__main__finded-movies">
+            <div class="d-flex mt-3" *ngFor="let movie of userWatchList">
+                <div>
+                    <img [routerLink]="'movie-detail'" (click)="sendDetails(movie)" [src]="url + movie.poster_path"
+                        alt="">
+                </div>
+                <div class="dbi-search__main__finded-movies__detail ms-3">
+                    <h5> {{movie.original_title }} </h5>
+                    <div class="d-flex">
+                        <img src="assets/images/icons/star.svg" alt="">
+                        <p class="ms-2 mb-2"> {{movie.vote_average}}</p>
+                    </div>
+                    <div class="d-flex">
+                        <img src="assets/images/icons/calender.svg" alt="">
+                        <p class="ms-2 mb-2"> {{movie.release_date}} </p>
+                    </div>
+                    <div class="d-flex">
+                        <img src="assets/images/icons/clock.svg" alt="">
+                        <p class="ms-2 mb-2"> {{movie.runtime}} </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </div>

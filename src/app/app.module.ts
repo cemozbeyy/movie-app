@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderInterceptor } from './core/helpers/loader.interceptor';
 import { LoaderComponent } from './modules/layout/components/loader/loader.component';
 import { FormsModule } from '@angular/forms';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [

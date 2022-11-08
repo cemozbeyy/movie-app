@@ -7,6 +7,36 @@
     h3 {
         color: #ececec;
     }
+    .dbi-search__main__finded-movies {
+        margin: 1.5625rem;
+        &:last-child {
+            padding-bottom: 25%;
+        }
+        img {
+            width: 95px;
+            object-fit: cover;
+            height: 120px;
+            border-radius: 1rem;
+        }
+
+        &__detail {
+            h5 {
+                color: var(--second-color);
+                margin-bottom: 20px;
+                font-size: 16px;
+                font-weight: 400;
+            }
+            img {
+                width: 0.875rem;
+                height: 0.875rem;
+            }
+            p {
+                color: #eeeeee;
+                font-weight: 300;
+                font-size: 12px;
+            }
+        }
+    }
     &__not-found {
         text-align: center;
         margin-top: 50%;

@@ -9,6 +9,7 @@ export class MovieService {
     apiURL = environment.apiUrl;
     apiKey = "api_key=fd75843b9ebbac99802953a5beb3d1fb"
     getMovieDetails = new BehaviorSubject<MovieDetails | null>(null)
+    watchList = new BehaviorSubject<MovieDetails | null>(null)
     constructor(private http: HttpClient) { }
 
     getMovies() {
