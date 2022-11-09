@@ -12,14 +12,14 @@ import { MovieService } from 'src/app/core/services/movie.service';
 export class HomeComponent implements OnInit {
     imagePath!: MovieDetails[]
     url = "https://image.tmdb.org/t/p/w200"
-    clickedVal: any
+
     getNowPlayingMovies!: MovieDetails[]
     activeClick = ""
     getUpComingMovies!: MovieDetails[]
     getTopRated!: MovieDetails[]
     getPopularmovies!: MovieDetails[]
     constructor(private movieService: MovieService) {
-        console.log(this.clickedVal)
+
     }
 
 

@@ -10,6 +10,8 @@ import { LoaderInterceptor } from './core/helpers/loader.interceptor';
 import { LoaderComponent } from './modules/layout/components/loader/loader.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxsModule } from '@ngxs/store';
+import { WatchListState } from './core/helpers/watch-list.state';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxsModule.forRoot([WatchListState])
 
   ],
   providers: [

@@ -4,6 +4,9 @@ import { CastDetail, GetReviewResult, MovieDetails, Reviews } from 'src/app/core
 import { MainService } from 'src/app/core/services/main.service';
 import { MovieService } from 'src/app/core/services/movie.service';
 import { ToastrService } from 'ngx-toastr';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { AddMovie, WatchListState } from 'src/app/core/helpers/watch-list.state';
 
 @Component({
     selector: 'dbi-movie-details',
@@ -19,15 +22,19 @@ export class MovieDetailsComponent implements OnInit {
     activeClick = ""
     getUserReviews?: GetReviewResult[]
     avatarPath!: string
+
+    @Select(WatchListState) movies?: Observable<[]>;
+
     actorCasts!: CastDetail[]
     constructor(private _router: Router,
         private movieService: MovieService,
         private toastr: ToastrService,
+        private store: Store,
         private mainService: MainService) {
         this.movieService.getMovieDetails.subscribe(movieDetails => {
             this.getMovieDetails = movieDetails
+
             this.movieType = movieDetails?.genres[0].name
-            console.log(this.getMovieDetails)
         })
 
     }
@@ -49,16 +56,7 @@ export class MovieDetailsComponent implements OnInit {
         })
     }
     saveMovie() {
-        let id = this.getMovieDetails?.id || '';
-        let allEntries = JSON.parse((localStorage.getItem("fav-movie") as any));
-        if (allEntries == null) {
-            allEntries = []
-        }
-        allEntries.push(id)
-        localStorage.setItem('fav-movie', JSON.stringify(allEntries))
-        let sendWatchList = []
-        sendWatchList.push(this.getMovieDetails?.id)
-        this.movieService.watchList.next((sendWatchList as any))
+        this.store.dispatch(new AddMovie(this.getMovieDetails?.id!))
         this.toastr.success("The movie was successfully saved.")
 
     }

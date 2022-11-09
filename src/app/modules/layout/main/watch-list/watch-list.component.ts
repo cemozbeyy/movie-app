@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
+import { forkJoin, Observable } from 'rxjs';
 import { DiscoverMovies, MovieDetails } from 'src/app/core/helpers/models/movies.model';
+import { WatchListState } from 'src/app/core/helpers/watch-list.state';
 import { MainService } from 'src/app/core/services/main.service';
 import { MovieService } from 'src/app/core/services/movie.service';
 @Component({
@@ -11,31 +14,31 @@ import { MovieService } from 'src/app/core/services/movie.service';
 
 export class WatchListComponent implements OnInit {
     userWatchList?: MovieDetails[] | null;
-    sendWatchList?: number[] | null;
+    sendWatchList?: number[];
     url = "https://image.tmdb.org/t/p/w200"
-    constructor(private _router: Router, private mainService: MainService, private movieService: MovieService) {
-        let movieIds: any = localStorage.getItem("fav-movie")
-        // this.movieService.movieDetails(movieIds).subscribe((moviesDetail:DiscoverMovies)=> {
-        //     console.log(moviesDetail)
-        //     this.watchList = moviesDetail.results
-        // })
-        this.movieService.watchList.subscribe((moviesDetail: any) => {
-            this.userWatchList = []
-            this.sendWatchList = moviesDetail
-            this.sendWatchList?.forEach(watchListIds => {
-                this.movieService.movieDetails(watchListIds).subscribe(moviesDetail => {
-                    this.userWatchList?.push(moviesDetail)
-                })
+    @Select(WatchListState) movies?: Observable<number[]>;
+
+    constructor(
+        private _router: Router,
+        private mainService: MainService,
+        private movieService: MovieService,
+        private store: Store
+    ) {
+        this.store.select(WatchListState).subscribe((watchList: number[]) => {
+            this.sendWatchList = watchList
+            const requests = this.sendWatchList!.map(o => this.movieService.movieDetails(o))
+            forkJoin(
+                requests
+            ).subscribe(result => {
+                this.userWatchList = result
             })
-
-
         })
 
 
     }
 
     ngOnInit() {
-        console.log(this.userWatchList)
+
     }
     sendDetails(movie: MovieDetails) {
 
